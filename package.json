@@ -1,0 +1,15 @@
+{
+  "name": "hedera",
+  "version": "1.0.0",
+  "description": "",
+  "main": "account.js",
+  "scripts": {
+    "start": "node script/deploy_token_contract.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hashgraph/sdk": "^2.19.0",
+    "dotenv": "^16.0.3"
+  }
+}
