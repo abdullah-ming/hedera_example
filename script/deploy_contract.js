@@ -34,44 +34,44 @@ const fileCreateTx = new FileCreateTransaction()
 
 async function main() {
 
-    // //Submit the file to the Hedera test network signing with the transaction fee payer key specified with the client
-    // const submitTx = await fileCreateTx.execute(client);
+    //Submit the file to the Hedera test network signing with the transaction fee payer key specified with the client
+    const submitTx = await fileCreateTx.execute(client);
 
-    // //Get the receipt of the file create transaction
-    // const fileReceipt = await submitTx.getReceipt(client);
+    //Get the receipt of the file create transaction
+    const fileReceipt = await submitTx.getReceipt(client);
 
-    // //Get the file ID from the receipt
-    // const bytecodeFileId = fileReceipt.fileId;
+    //Get the file ID from the receipt
+    const bytecodeFileId = fileReceipt.fileId;
 
-    // //Log the file ID
-    // console.log("The smart contract byte code file ID is " +bytecodeFileId)
+    //Log the file ID
+    console.log("The smart contract byte code file ID is " +bytecodeFileId)
 
-    // // Instantiate the contract instance
-    // const contractTx = await new ContractCreateTransaction()
-    // //Set the file ID of the Hedera file storing the bytecode
-    // .setBytecodeFileId(bytecodeFileId)
-    // //Set the gas to instantiate the contract
-    // .setGas(100000)
-    // //Provide the constructor parameters for the contract
-    // .setConstructorParameters(new ContractFunctionParameters().addString("Hello from Hedera!"));
+    // Instantiate the contract instance
+    const contractTx = await new ContractCreateTransaction()
+    //Set the file ID of the Hedera file storing the bytecode
+    .setBytecodeFileId(bytecodeFileId)
+    //Set the gas to instantiate the contract
+    .setGas(100000)
+    //Provide the constructor parameters for the contract
+    .setConstructorParameters(new ContractFunctionParameters().addString("Hello from Hedera!"));
 
-    // //Submit the transaction to the Hedera test network
-    // const contractResponse = await contractTx.execute(client);
+    //Submit the transaction to the Hedera test network
+    const contractResponse = await contractTx.execute(client);
 
-    // //Get the receipt of the file create transaction
-    // const contractReceipt = await contractResponse.getReceipt(client);
+    //Get the receipt of the file create transaction
+    const contractReceipt = await contractResponse.getReceipt(client);
 
-    // //Get the smart contract ID
-    // const newContractId = contractReceipt.contractId;
+    //Get the smart contract ID
+    const newContractId = contractReceipt.contractId;
 
-    // //Log the smart contract ID
-    // console.log("The smart contract ID is " + newContractId);
+    //Log the smart contract ID
+    console.log("The smart contract ID is " + newContractId);
 
 
  //Create the transaction to update the contract message
  const contractExecTx = await new ContractExecuteTransaction()
  //Set the ID of the contract
- .setContractId("0.0.49059384")
+ .setContractId(newContractId)
  //Set the gas for the contract call
  .setGas(100000)
  //Set the contract function to call
